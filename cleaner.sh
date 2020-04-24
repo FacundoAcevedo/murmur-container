@@ -14,9 +14,11 @@ sysdirs="
 /sbin
 /usr
 "
-find ${sysdirs} -xdev -type d \
--exec chown root:root {} \; \
--exec chmod 0755 {} \;
+for i in ${sysdirs}; do
+    find "${i}" -xdev -type d \
+    -exec chown root:root {} \; \
+    -exec chmod 0755 {} \;
+done
 
 
 

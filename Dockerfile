@@ -14,10 +14,14 @@ COPY cleaner.sh /
 RUN sh cleaner.sh && \
     rm cleaner.sh
 
-COPY entrypoint.sh /root
-RUN chmod 500 /root/entrypoint.sh
+COPY prepare_config.sh /
+RUN sh prepare_config.sh && \
+    rm prepare_config.sh
 
 
 
 #ENTRYPOINT ["/bin/sh"]
-ENTRYPOINT ["/root/entrypoint.sh"]
+#ENTRYPOINT ["/root/entrypoint.sh"]
+
+ENTRYPOINT ["murmurd", "-fg", "-v"]
+CMD ["-ini", "/data/murmur.ini"]

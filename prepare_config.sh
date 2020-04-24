@@ -20,9 +20,3 @@ then
     sed -i 's/var.log.murmur/data/' ${INI_DESTINATION}
     sed -i 's/var.lib.murmur/data/' ${INI_DESTINATION}
 fi
-
-OPTS="-ini ${INI_DESTINATION} -fg"
-
-exec murmurd ${OPTS} ${@}
-
-
